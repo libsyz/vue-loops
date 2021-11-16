@@ -1,5 +1,24 @@
+# vue-loops
 
+## Project setup
+```
+yarn install
+```
 
-# Vue Loops!
+### Compiles and hot-reloads for development
+```
+yarn serve
+```
 
-A repo to practice Vue.js
+### Compiles and minifies for production
+```
+yarn build
+```
+
+### Lints and fixes files
+```
+yarn lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
