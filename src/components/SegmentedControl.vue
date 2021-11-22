@@ -1,14 +1,18 @@
 <template>
   <div class="root">
     <h2> This is segmented Control! </h2>
+    <div class="controls"
+         :class="{ hidden: windowWidth < 600 }">
       <div v-on:click="activeThis(item)"
            class="control"
-           :class="{ active : activeFilter == item }"
+           :class="{ active: activeFilter == item }"
            :key="item"
            v-for="item in searchFilters">
         {{ `Sort by ${item}` }}
       </div>
-      <form action="">
+    </div>
+      <form action=""
+            :class="{ hidden: windowWidth > 600 }">
         <select name="segmented"
                 class="selection"
                 v-model="activeFilter"
@@ -26,6 +30,7 @@
 <script>
 export default {
   created() {
+    this.windowWidth = window.outerWidth;
     window.addEventListener('resize', this.showOrHide);
   },
   name: 'SegmentedControl',
@@ -38,6 +43,7 @@ export default {
     },
     showOrHide(e) {
       console.log(e);
+      this.windowWidth = e.srcElement.outerWidth;
     }
   },
   data: function() {
@@ -74,5 +80,9 @@ export default {
 
   .selection {
     width: 100%;
+  }
+
+  .hidden {
+    display: none;
   }
 </style>
