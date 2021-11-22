@@ -25,6 +25,9 @@
 
 <script>
 export default {
+  created() {
+    window.addEventListener('resize', this.showOrHide);
+  },
   name: 'SegmentedControl',
   props: {
     filters: Array
@@ -32,12 +35,17 @@ export default {
   methods: {
     activeThis(item) {
       this.activeFilter = item;
+    },
+    showOrHide(e) {
+      console.log(e);
     }
   },
   data: function() {
     return {
       searchFilters: this.filters,
-      activeFilter: this.filters[0] };
+      activeFilter: this.filters[0],
+      windowWidth: 0
+    }
   },
   computed: {
     upcase(str) {
