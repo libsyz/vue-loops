@@ -1,11 +1,10 @@
 <template>
-  <div class="root">
-    <h2> This is segmented Control! </h2>
+  <div class="container">
     <div class="controls"
          :class="{ hidden: windowWidth < 600 }">
       <div v-on:click="activeThis(item)"
-           class="control"
-           :class="{ active: activeFilter == item }"
+           class="segmented-control__button"
+           :class="{ segmentedControl__button__active: activeFilter == item }"
            :key="item"
            v-for="item in searchFilters">
         {{ `Sort by ${item}` }}
@@ -13,8 +12,8 @@
     </div>
       <form action=""
             :class="{ hidden: windowWidth > 600 }">
-        <select name="segmented"
-                class="selection"
+        <select name="selection"
+                class="segmented-control__select"
                 v-model="activeFilter"
                 id="">
           <option v-for="item in searchFilters"
@@ -30,7 +29,7 @@
 <script>
 export default {
   created() {
-    this.windowWidth = window.outerWidth;
+    this.windowWidth = window.innerWidth;
     window.addEventListener('resize', this.showOrHide);
   },
   name: 'SegmentedControl',
@@ -42,8 +41,8 @@ export default {
       this.activeFilter = item;
     },
     showOrHide(e) {
-      console.log(e);
-      this.windowWidth = e.srcElement.outerWidth;
+      this.windowWidth = e.srcElement.innerWidth;
+      console.log(this.windowWidth)
     }
   },
   data: function() {
@@ -62,24 +61,64 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-  .active {
-    color: #fff;
-    background-color: blue !important;
+<style unscoped>
+  body {
+      background: #74b9ff;
+      font-size: 14px;
   }
 
-  .control {
-    padding: 10px 10px;
-    background-color: #fff;
-    display: inline;
+  .container {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      border: 1px solid #dedede;
+      background: #fff;
+      border-radius: 4px;
+      width: 400px;
+      margin: 100px auto 0;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
   }
 
-  .control:hover {
-    cursor: pointer;
+  .segmented-control__button {
+      border: 2px solid #5896ff;
+      border-left: 0;
+      padding: 10px;
+      position: relative;
+      cursor: pointer;
+      background: #fff;
+      display: inline;
   }
 
-  .selection {
-    width: 100%;
+  .segmented-control__button:hover {
+      background: rgba(88, 150, 225, 0.2)
+  }
+
+  .segmented-control__button:first-child {
+      border-left: 2px solid #5896ff;
+      border-radius: 4px 0 0 4px;
+  }
+
+  .segmented-control__button:last-child {
+      border-radius: 0 4px 4px 0;
+  }
+
+  .segmentedControl__button__active,
+  .segmentedControl__button__active:hover {
+      background: #5896ff;
+      color: #fff;
+  }
+
+  .segmented-control__select {
+      width: 100%;
+      border: 2px solid #5896ff;
+      background: transparent;
+      height: 36px;
+  }
+
+  .segmented-control__button:focus,
+  .segmented-control__select:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(88, 150, 225, 0.4);
+      z-index: 2;
   }
 
   .hidden {
