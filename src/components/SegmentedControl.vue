@@ -61,7 +61,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style unscoped>
+<style scoped>
   body {
       background: #74b9ff;
       font-size: 14px;
