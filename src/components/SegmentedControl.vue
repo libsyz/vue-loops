@@ -33,9 +33,6 @@ export default {
     window.addEventListener('resize', this.showOrHide);
   },
   name: 'SegmentedControl',
-  props: {
-    filters: Array
-  },
   methods: {
     activeThis(item) {
       this.activeFilter = item;
@@ -47,8 +44,8 @@ export default {
   },
   data: function() {
     return {
-      searchFilters: this.filters,
-      activeFilter: this.filters[0],
+      searchFilters: ['location', 'price', 'distance'],
+      activeFilter: 'location',
       windowWidth: 0
     }
   },
