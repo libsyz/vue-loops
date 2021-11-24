@@ -1,4 +1,8 @@
 <template>
+  <h1> Check out these amazing Vue components </h1>
+  <p>All these are a bunch of nice components implemented in Vue! </p>
+  <!-- Now I need some way of linking to the components -->
+  <a href="/Segmented Control"> Segmented Control </a>
   <SegmentedControl v-bind:filters="['price', 'relevance', 'distance']"/>
 </template>
 
