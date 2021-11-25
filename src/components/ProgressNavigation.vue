@@ -1,7 +1,7 @@
 <template>
   <input v-model="formInput"
          type="text"
-         placeholder="enter tab index">
+         placeholder="Enter tab index">
   <button @click="selectForm()"> Change Tab </button>
   <div class="buttons">
     <div @click="setSelected('positive')"
