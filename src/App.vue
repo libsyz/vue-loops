@@ -1,8 +1,15 @@
 <template>
+  <div class="flex">
   <div id="nav">
-    <router-link to="/segmented_control">Segmented Control</router-link>
+      <router-link to="/segmented_control">Segmented Control</router-link>
+      <br>
+      <router-link to="/progress_navigation">Progress Navigation</router-link>
+    </div>
+    <div>
+    <router-view/>
+    </div>
   </div>
-  <router-view/>
+
 </template>
 
 <style>
@@ -25,5 +32,9 @@
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+
+.flex {
+  display: flex;
 }
 </style>
