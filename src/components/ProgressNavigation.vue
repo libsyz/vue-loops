@@ -1,32 +1,27 @@
 <template>
   <div class="container">
-    <input v-model="formInput"
-          class="form-input"
-          type="text"
-          placeholder="Enter tab index">
-    <button class="btn--select-tab" @click="selectForm()"> Change Tab </button>
-    <div class="buttons">
-      <div @click="setSelected('positive')"
-          :class="{ active: active === 'positive' }"
-          class="btn--tab">positive
-      </div >
-      <div @click="setSelected('negative')"
-          :class="{ active: active === 'negative' }"
-          class="btn--tab">negative
+      <input v-model="formInput"
+            class="form-input"
+            type="text"
+            placeholder="Enter tab index">
+      <button class="btn--select-tab" @click="selectForm()"> Change Tab </button>
+      <div class="buttons">
+        <div v-for="(_, reviewType, id ) in reviews"
+             v-bind:key="id"
+             @click="setSelected(reviewType)"
+             :class="{ active: active === reviewType }"
+             class="btn--tab">
+             {{ reviewType }}
+        </div>
       </div>
-
-      <div @click="setSelected('neutral')"
-          :class="{ active: active === 'neutral' }"
-          class="btn--tab">neutral</div>
+      <div class="content">
+        <p class="content__review"
+          v-for="item in selected"
+          :key="item">
+          {{ item }}
+        </p>
+      </div>
     </div>
-    <div class="content">
-      <p class="content__review"
-        v-for="item in selected"
-        :key="item">
-        {{ item }}
-      </p>
-    </div>
-  </div>
 </template>
 
 <script>
@@ -38,7 +33,7 @@ export default {
   methods: {
     setSelected(value) {
       this.active = value;
-      this.selected = this.$data[value]
+      this.selected = this.$data['reviews'][value]
     },
     selectForm() {
       if ( this.formInput === '1' )
@@ -61,9 +56,11 @@ export default {
   },
   data: function() {
     return {
-      negative: ['oh so bad', 'really bad', 'hate this service'],
-      positive: ['oh so good', 'really good', 'love this service'],
-      neutral: ['oh so oh', 'really...you know really', 'nothing to say'],
+      reviews: {
+        positive: ['oh so good', 'really good', 'love this service'],
+        negative: ['oh so bad', 'really bad', 'hate this service'],
+        neutral: ['oh so oh', 'really...you know really', 'nothing to say']
+      },
       selected: null,
       formInput: '',
       active: '',
