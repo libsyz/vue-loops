@@ -1,27 +1,31 @@
 <template>
-  <input v-model="formInput"
-         type="text"
-         placeholder="Enter tab index">
-  <button @click="selectForm()"> Change Tab </button>
-  <div class="buttons">
-    <div @click="setSelected('positive')"
-         :class="{ active: active === 'positive' }"
-         class="btn">positive
-    </div >
-    <div @click="setSelected('negative')"
-         :class="{ active: active === 'negative' }"
-         class="btn">negative
-    </div>
+  <div class="container">
+    <input v-model="formInput"
+          class="form-input"
+          type="text"
+          placeholder="Enter tab index">
+    <button class="btn--select-tab" @click="selectForm()"> Change Tab </button>
+    <div class="buttons">
+      <div @click="setSelected('positive')"
+          :class="{ active: active === 'positive' }"
+          class="btn--tab">positive
+      </div >
+      <div @click="setSelected('negative')"
+          :class="{ active: active === 'negative' }"
+          class="btn--tab">negative
+      </div>
 
-    <div @click="setSelected('neutral')"
-         :class="{ active: active === 'neutral' }"
-         class="btn">neutral</div>
-  </div>
-  <div class="content">
-    <p v-for="item in selected"
-       :key="item">
-       {{ item }}
-    </p>
+      <div @click="setSelected('neutral')"
+          :class="{ active: active === 'neutral' }"
+          class="btn--tab">neutral</div>
+    </div>
+    <div class="content">
+      <p class="content__review"
+        v-for="item in selected"
+        :key="item">
+        {{ item }}
+      </p>
+    </div>
   </div>
 </template>
 
@@ -69,19 +73,48 @@ export default {
 </script>
 
 <style>
-  .active {
+  .container  {
+    margin: 100px auto 0;
+  }
+
+  .form-input {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid 2px #b5b5b5;
+    padding: 10px
+  }
+
+  .form-input:focus {
+    outline: none;
+    border-bottom-color: #000;
+    transition: 0.20s ease;
+  }
+
+  .content__review {
+    text-align: left;
+  }
+  .btn--tab.active {
     font-weight: bold;
+    transition: .15s ease-in;
+    color: #000;
+    opacity: 1;
   }
   .buttons {
     margin-top: 15px;
     text-transform: uppercase;
     cursor: pointer;
   }
-  .btn {
+
+  .btn--select-tab {
+    border: none;
+    font-size: 14px;
+  }
+  .btn--tab {
     font-size: 14px;
     display: inline;
     margin-right: 10px;
-
+    opacity: .4;
   }
 
 </style>
