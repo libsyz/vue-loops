@@ -13,11 +13,9 @@
 <script>
 export default {
   mounted() {
-    this.emitter.on('random-toggle', ({origin})   => {
-      console.log({sender: origin, receiver: this.originator})
-      if (origin != this.originator && (Math.random() > 0.5)) {
-        console.log(this.originator)
-        this.randomSwitch();
+    this.emitter.on('random-toggle', ({sender})   => {
+      if (sender != this.originator && (Math.random() > 0.5)) {
+        this.toggleSwitch();
       }
     })
   },
@@ -25,16 +23,15 @@ export default {
   props: ['origin'],
   methods: {
     change() {
-      this.off = !this.off;
-      this.on = !this.on;
+      this.toggleSwitch();
       this.emitter.emit(
             'random-toggle',
             {
-              origin: this.originator
+              sender: this.originator
             }
           );
     },
-    randomSwitch(){
+    toggleSwitch(){
       this.off = !this.off;
       this.on = !this.on;
     }
