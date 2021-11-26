@@ -3,7 +3,7 @@
   <div class="toggle__container"
        v-for="toggle in toggles"
        v-bind:key="toggle">
-       <toggle/>
+       <toggle :origin="toggle"/>
   </div>
 </template>
 

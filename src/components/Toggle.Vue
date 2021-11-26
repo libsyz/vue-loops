@@ -12,17 +12,38 @@
 
 <script>
 export default {
+  mounted() {
+    this.emitter.on('random-toggle', ({origin, rand})   => {
+      if (origin != this.originator && rand > 0.5) {
+        console.log(this.originator)
+        this.randomSwitch();
+      }
+    })
+  },
   name: 'toggle',
+  props: ['origin'],
   methods: {
     change() {
-      this.off = !this.off
-      this.on = !this.on
+      this.off = !this.off;
+      this.on = !this.on;
+      this.emitter.emit(
+            'random-toggle',
+            {
+              originator: this.originator,
+              rand: Math.random()
+            }
+          );
+    },
+    randomSwitch(){
+      this.off = !this.off;
+      this.on = !this.on;
     }
   },
   data: function () {
     return {
       off: true,
-      on: false
+      on: false,
+      originator: this.origin
     }
   }
 }
