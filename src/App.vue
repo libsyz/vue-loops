@@ -5,10 +5,13 @@
       <br>
       <router-link to="/progress_navigation">Progress Navigation</router-link>
       <br>
-      <router-link to="/random_switches"> Random Switches </router-link>
+      <router-link to="/random_switches"> Random Switches
+      </router-link>
     </div>
     <div>
     <router-view/>
+
+
     </div>
   </div>
 
