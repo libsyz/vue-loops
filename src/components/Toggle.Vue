@@ -13,8 +13,9 @@
 <script>
 export default {
   mounted() {
-    this.emitter.on('random-toggle', ({origin, rand})   => {
-      if (origin != this.originator && rand > 0.5) {
+    this.emitter.on('random-toggle', ({origin})   => {
+      console.log({sender: origin, receiver: this.originator})
+      if (origin != this.originator && (Math.random() > 0.5)) {
         console.log(this.originator)
         this.randomSwitch();
       }
@@ -29,8 +30,7 @@ export default {
       this.emitter.emit(
             'random-toggle',
             {
-              originator: this.originator,
-              rand: Math.random()
+              origin: this.originator
             }
           );
     },
