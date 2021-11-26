@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import SegmentedControl from '../components/SegmentedControl.vue';
 import ProgressNavigation from '../components/ProgressNavigation.vue';
+import RandomSwitches from '../components/RandomSwitches.vue';
 
 const routes = [
   {
@@ -13,6 +14,11 @@ const routes = [
     name: 'ProgressNavigation',
     component: ProgressNavigation
   },
+  {
+    path: '/random_switches',
+    name: 'RandomSwiches',
+    component: RandomSwitches
+  }
 
 ]
 
