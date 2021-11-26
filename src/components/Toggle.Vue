@@ -2,13 +2,13 @@
 
 <template>
   <div class="toggle__body">
-
+    Hey Yo
   </div>
 </template>
 
 <script>
 export default {
-
+  name: 'toggle'
 }
 </script>
 

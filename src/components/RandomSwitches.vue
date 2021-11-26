@@ -3,13 +3,14 @@
   <div class="toggle__container"
        v-for="toggle in toggles"
        v-bind:key="toggle">
-       <Toggle>
+        <toggle> </toggle>
   </div>
 
 </template>
 
+
 <script>
-import { Toggle } from "./Toggle";
+
 export default {
   data: function () {
     return {
