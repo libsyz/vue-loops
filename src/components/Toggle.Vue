@@ -1,16 +1,21 @@
 
 
 <template>
-  <div class="toggle__body"
-       :class="{ off: off, on: on }">
-    <div class="toggle__button"
-         :class="{ off: off, on: on}"
-         v-on:click="change()">
+  <div class="toggle__wrapper">
+    <p :class="{ text__on: on }"
+       class="toggle__desc"> This is not so useful  </p>
+    <div class="toggle__body"
+        :class="{ off: off, on: on }">
+      <div class="toggle__button"
+          :class="{ off: off, on: on}"
+          v-on:click="change()">
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+
 export default {
   mounted() {
     this.emitter.on('random-toggle', ({sender})   => {
@@ -24,7 +29,7 @@ export default {
   methods: {
     change() {
       this.toggleSwitch();
-      this.emitter.emit(
+        this.emitter.emit(
             'random-toggle',
             {
               sender: this.originator
@@ -47,13 +52,27 @@ export default {
 </script>
 
 <style>
+  .toggle__wrapper {
+    display: flex;
+    align-items: middle;
+  }
+
+  .toggle__desc {
+    margin-top: 0px;
+    margin-right: 1em;
+  }
+
+  .text__on {
+    color: rgb(107, 161, 99);
+  }
+
   .toggle__body {
-    width: 48px;
+    width: 40px;
     height: 16px;
     border-radius: 10px;
     margin-bottom: 10px;
     position: relative;
-
+    transition: color 0.3 ease;
   }
 
   .toggle__body.on {
@@ -68,17 +87,18 @@ export default {
 
   .toggle__button {
     cursor: pointer;
-    background-color: #fff;
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    border: solid 0.5px #000;
+    background: #fff;
+    border: 1px solid #dedede;
+    box-sizing: border-box;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     position:absolute;
-    background: linear-gradient(to left, #bdc3c7, #2c3e50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   }
 
   .toggle__button.on {
-    left: 32px;
+    left: 24px;
     transition: left 0.3s ease;
   }
 
