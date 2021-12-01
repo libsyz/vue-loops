@@ -11,4 +11,4 @@ Loop 3
 Open Questions
 --------------
 [ ] - How to render component within component?
-[ ] - How to emit events to sibling elements?
+[ ] - How to emit events to sibling elements?w
