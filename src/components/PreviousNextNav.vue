@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container-options">
     <ul>
       <li> 1 - Choose Title </li>
       <li> 2 - Choose Description </li>
@@ -28,7 +28,7 @@ export default {
 </script>
 
 <style>
-  .container {
+  .container-options {
     display: flex;
   }
 </style>

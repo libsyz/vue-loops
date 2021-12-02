@@ -1,18 +1,22 @@
 <template>
   <div class="flex">
-  <div id="nav">
+    <div id="nav">
       <router-link to="/segmented_control">Segmented Control</router-link>
       <br>
       <router-link to="/progress_navigation">Progress Navigation</router-link>
       <br>
       <router-link to="/random_switches"> Random Switches
       </router-link>
+      <br>
+      <router-link to="/previous_next_nav"> Previous Next Navigation</router-link>
     </div>
     <div>
-    <router-view/>
-
-
+      <router-view/>
     </div>
+
+
+
+
   </div>
 
 </template>

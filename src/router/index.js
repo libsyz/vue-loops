@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import SegmentedControl from '../components/SegmentedControl.vue';
 import ProgressNavigation from '../components/ProgressNavigation.vue';
 import RandomSwitches from '../components/RandomSwitches.vue';
-
+import PreviousNextNav from '../components/PreviousNextNav.vue';
 
 const routes = [
   {
@@ -19,6 +19,11 @@ const routes = [
     path: '/random_switches',
     name: 'RandomSwiches',
     component: RandomSwitches
+  },
+  {
+    path: '/previous_next_nav',
+    name: 'PreviousNextNav',
+    component: PreviousNextNav
   }
 
 ]
