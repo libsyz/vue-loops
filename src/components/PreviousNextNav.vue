@@ -5,10 +5,19 @@
       <li> 2 - Choose Description </li>
       <li> 3 - Confirm Data </li>
     </ul>
-    <div class="box"
-         :class="{ show: title && !description && !confirmed }"
+    <div class="box box-title"
+         :class="{ show: title && !description && !confirmed }">
       Choose Title
       <button @click="submitTitle()"> Submit Title </button>
+    </div>
+    <div class="box box-description"
+         :class="{ show: title && description && !confirmed }">
+      Enter Description
+      <button @click="submitDescription()"> Submit Title </button>
+    </div>
+    <div class="box box-confirm"
+         :class="{ show: title && description && confirmed }">
+      <button @click="submitConfirm()"> Confirm </button>
     </div>
   </div>
 </template>
@@ -17,15 +26,24 @@
 export default {
   data: function() {
     return {
-      title: false,
+      title: true,
       description: false,
       confirmed: false
     }
   },
   methods: {
     submitTitle() {
-      this.title = true;
+      this.description = true;
+    },
+
+    submitDescription() {
+      this.confirmed = true;
+    },
+    submitConfirm(){
+      alert('you\'re done!');
     }
+
+
   }
 }
 </script>
