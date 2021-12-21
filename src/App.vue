@@ -8,7 +8,10 @@
       <router-link to="/random_switches"> Random Switches
       </router-link>
       <br>
+
       <router-link to="/previous_next_nav"> Previous Next Navigation</router-link>
+      <br>
+      <router-link to="/typing_cursor"> Typing Cursor</router-link>
     </div>
     <div>
       <router-view/>

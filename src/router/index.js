@@ -3,6 +3,7 @@ import SegmentedControl from '../components/SegmentedControl.vue';
 import ProgressNavigation from '../components/ProgressNavigation.vue';
 import RandomSwitches from '../components/RandomSwitches.vue';
 import PreviousNextNav from '../components/PreviousNextNav.vue';
+import TypingCursor from '../components/TypingCursor.vue';
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: '/previous_next_nav',
     name: 'PreviousNextNav',
     component: PreviousNextNav
+  },
+  {
+    path: '/typing_cursor',
+    name: 'TypingCursor',
+    component: TypingCursor
   }
 
 ]
